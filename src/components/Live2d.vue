@@ -41,13 +41,6 @@ onMounted(async () => {
 
   model.value.scale.set(1, 1)
   model.value.anchor.set(0.5, 0.5)
-
-  // 交互
-  model.value.on('hit', (hitAreas: any) => {
-    if (hitAreas.includes('body')) {
-      model.value.motion('tap_body')
-    }
-  })
 })
 
 /**
