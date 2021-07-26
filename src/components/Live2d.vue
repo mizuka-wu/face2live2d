@@ -5,7 +5,7 @@
 <script lang="ts" setup>
 import { onMounted, defineProps, ref, Ref } from 'vue'
 import * as PIXI from 'pixi.js'
-import { Live2DModel } from 'pixi-live2d-display'
+import { Live2DModel } from 'pixi-live2d-display/dist/cubism4.min.js'
 
 const props = defineProps({
   path: {
