@@ -1,39 +1,23 @@
 <template>
-    <canvas ref="face" />
-    <video style="position: fixed; left: 0; top: 0;" ref="video"></video>
+    <canvas ref="canvasElement" />
 </template>
 <script lang="ts" setup>
-import { ref, Ref, onMounted } from 'vue'
-import { init, getMask } from '@/utils/face'
+import { ref, onMounted, Ref } from 'vue'
+import face, { canvas } from '@/utils/face'
 
-const video:Ref<null|HTMLVideoElement> = ref(null)
-
-async function getAll () {
-  if (video.value) {
-    console.log()
-    const data = await getMask(video.value)
-    console.log(data)
-    requestAnimationFrame(() => getAll())
+const canvasElement: Ref<null | HTMLCanvasElement> = ref(null)
+function draw () {
+  if (canvasElement.value) {
+    canvasElement.value.width = canvas.width
+    canvasElement.value.height = canvas.height
+    const context = canvasElement.value.getContext('2d')
+    // eslint-disable-next-line no-unused-expressions
+    context?.drawImage(canvas, 0, 0)
   }
+  requestAnimationFrame(() => draw())
 }
 
-onMounted(async () => {
-  await init()
-  navigator.getUserMedia({
-    video: true
-  }, (mediaStream) => {
-    if (video.value) {
-      video.value.srcObject = mediaStream
-      video.value.oncanplay = function () {
-        if (video.value) {
-          video.value.play()
-          getAll()
-        }
-      }
-    }
-  }, () => {
-    console.log('error')
-  })
+onMounted(() => {
+  draw()
 })
-
 </script>
