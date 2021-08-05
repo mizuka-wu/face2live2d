@@ -10,20 +10,19 @@ export const PARAMETER_ID = {
   /** 眼球x轴 */
   EYE_BALL_X: 'ParamEyeBallX',
   /** 眼球Y轴 */
-  EYE_BALL_Y: 'ParamEyeBallY'
+  EYE_BALL_Y: 'ParamEyeBallY',
+  LEFT_BROW_Y: 'ParamBrowLY',
+  RIGHT_BROW_Y: 'ParamBrowRY',
+  LEFT_BROW_X: 'ParamBrowLX',
+  RIGHT_BROW_X: 'ParamBrowRX',
+  LEFT_BROW_ANGLE: 'ParamBrowLAngle',
+  RIGHT_BROW_ANGLE: 'ParamBrowRAngle',
+  LEFT_BROW_FORM: 'ParamBrowLForm',
+  RIGHT_BROW_FORM: 'ParamBrowRForm',
+  MOUTH_FORM: 'ParamMouthForm',
+  MOUTH_OPEN_Y: 'ParamMouthOpenY',
+  CHEEK: 'ParamCheek',
+  BODY_ANGLE_X: 'ParamBodyAngleX',
+  BODY_ANGLE_Y: 'ParamBodyAngleY',
+  BODY_ANGLE_Z: 'ParamBodyAngleZ'
 }
-'ParamBrowLY'
-'ParamBrowRY'
-'ParamBrowLX'
-'ParamBrowRX'
-'ParamBrowLAngle'
-'ParamBrowRAngle'
-'ParamBrowLForm'
-'ParamBrowRForm'
-'ParamMouthForm'
-'ParamMouthOpenY'
-'ParamCheek'
-'ParamBodyAngleX'
-'ParamBodyAngleY'
-'ParamBodyAngleZ'
-'ParamBreath'
