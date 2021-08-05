@@ -1,3 +1,4 @@
+import { reactive } from 'vue'
 export const PARAMETER_ID = {
   /** 左眼开闭 */
   LEFT_EYE_OPEN: 'ParamEyeLOpen',
@@ -27,6 +28,15 @@ export const PARAMETER_ID = {
   BODY_ANGLE_Z: 'ParamBodyAngleZ'
 }
 
+export const modelParamter = reactive({
+  [PARAMETER_ID.BODY_ANGLE_X]: 0,
+  [PARAMETER_ID.BODY_ANGLE_Y]: 0,
+  [PARAMETER_ID.BODY_ANGLE_Z]: 0
+})
+
+const parameterIds = Object.values(PARAMETER_ID)
 export function setParameterValue (model: { setParameterValueById(key: string, value: number): void }): void {
-  model.setParameterValueById('ParamMouthForm', 0)
+  parameterIds.forEach(parameterId => {
+    model.setParameterValueById(parameterId, modelParamter[parameterId])
+  })
 }

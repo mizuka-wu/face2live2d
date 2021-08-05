@@ -4,6 +4,7 @@
 
 <script lang="ts" setup>
 import { onMounted, defineProps, ref, Ref } from 'vue'
+import { setParameterValue } from '../utils/model'
 import * as PIXI from 'pixi.js'
 import { Live2DModel } from 'pixi-live2d-display/dist/cubism4.min.js'
 Live2DModel.registerTicker(PIXI.Ticker)
@@ -46,16 +47,17 @@ onMounted(async () => {
 
   model.value.buttonMode = true
 
-  // const updateFn = model.value.internalModel.motionManager.update
+  const updateFn = model.value.internalModel.motionManager.update
 
-  // model.value.internalModel.motionManager.update = (modelConfig, now) => {
-  //   modelConfig.setParameterValueById('ParamMouthForm', 0)
+  model.value.internalModel.motionManager.update = (modelConfig, now) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    setParameterValue(modelConfig as any)
 
-  //   return updateFn.call(
-  //     model.value?.internalModel.motionManager,
-  //     modelConfig,
-  //     now)
-  // }
+    return updateFn.call(
+      model.value?.internalModel.motionManager,
+      modelConfig,
+      now)
+  }
 })
 
 </script>
