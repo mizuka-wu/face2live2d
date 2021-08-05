@@ -37,6 +37,8 @@ export const modelParamter = reactive({
 const parameterIds = Object.values(PARAMETER_ID)
 export function setParameterValue (model: { setParameterValueById(key: string, value: number): void }): void {
   parameterIds.forEach(parameterId => {
-    model.setParameterValueById(parameterId, modelParamter[parameterId])
+    if (parameterId in modelParamter) {
+      model.setParameterValueById(parameterId, modelParamter[parameterId])
+    }
   })
 }
