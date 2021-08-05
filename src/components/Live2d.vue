@@ -22,7 +22,9 @@ const container: Ref<HTMLCanvasElement | null> = ref(null)
 const app: Ref<PIXI.Application | null> = ref(null)
 const model: Ref<Live2DModel | null> = ref(null)
 onMounted(async () => {
-  model.value = await Live2DModel.from(props.path)
+  model.value = await Live2DModel.from(props.path, {
+    autoInteract: false
+  })
   const { width, height } = model.value
 
   app.value = new PIXI.Application({
@@ -41,11 +43,27 @@ onMounted(async () => {
 
   model.value.scale.set(1, 1)
   model.value.anchor.set(0.5, 0.5)
+
+  model.value.buttonMode = true
+
+  // const updateFn = model.value.internalModel.motionManager.update
+
+  // model.value.internalModel.motionManager.update = (modelConfig, now) => {
+  //   modelConfig.setParameterValueById('ParamMouthForm', 0)
+
+  //   return updateFn.call(
+  //     model.value?.internalModel.motionManager,
+  //     modelConfig,
+  //     now)
+  // }
 })
 
-/**
- * 大小调整
- */
+// function updateModel () {
+//   if (model.value) {
+//     model.value.internalModel.breath()
+//   }
+//   requestAnimationFrame(() => updateModel())
+// }
 
 </script>
 
