@@ -26,3 +26,7 @@ export const PARAMETER_ID = {
   BODY_ANGLE_Y: 'ParamBodyAngleY',
   BODY_ANGLE_Z: 'ParamBodyAngleZ'
 }
+
+export function setParameterValue (model: { setParameterValueById(key: string, value: number): void }): void {
+  model.setParameterValueById('ParamMouthForm', 0)
+}

@@ -58,13 +58,6 @@ onMounted(async () => {
   // }
 })
 
-// function updateModel () {
-//   if (model.value) {
-//     model.value.internalModel.breath()
-//   }
-//   requestAnimationFrame(() => updateModel())
-// }
-
 </script>
 
 <style>
